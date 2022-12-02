@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>monkeyisland</title>
+  <script src="../../jsgame0.js"></script>
+  <script id="gameScript" type="text/plain">
+Pause:8
+Scene:CliffTop
+Background:clifftop
+Foreground:lookoutwall
+Character:0:guybrush1,460,220
+Character:1:lookout1,290,220
+Pause:1
+Character:0:guybrush4,450,220
+Pause:1
+Character:0:guybrush1,440,220
+Pause:1
+Character:0:guybrush4,430,220
+Pause:1
+Character:0:guybrush1,420,220
+Speech:0:Hi. I'm Guybrush Threepwood and I want to be a pirate.
+Pause:10
+Character:1:lookout2,290,220
+Speech:1:Yikes!
+Pause:4
+Speech:1:Don't creep up on me like that.
+Pause:6
+Speech:0:Err.. I'm over this way.
+Pause:6
+Character:1:lookout3,290,220
+Speech:1:Ah! Well then Thriftweed --
+Pause:5
+Speech:0:THREEPWOOD
+Pause:4
+Speech:0:Guybrush THREEPWOOD.
+Pause:4
+Speech:1:I see.
+Pause 3
+Speech:1:So you want to be a pirate, eh?
+Pause:6
+Speech:1:You look more like a flooring inspector.
+Pause:6
+Speech:1:But if you are serious about pirating...
+Pause:6
+Speech:1:go talk to the pirate leaders.
+Pause:6
+Speech:1:You'll find them in the Scumm Bar.
+Pause:6
+Speech:0:Gosh, thanks!
+Pause:4
+Speech:0:I'll do that!
+Pause:4
+Speech:0:Bye now.
+Pause:4
+Speech:0:I'm off to seek my fortune!
+Pause:6
+Speech:1:Good luck!
+Pause:4
+Character:1:lookout2,290,220
+Character:0:guybrush2,430,220
+Pause:1
+Character:1:lookout1,290,220
+Character:0:guybrush3,440,220
+Pause:1
+Character:0:guybrush2,450,220
+Pause:1
+Character:0:guybrush3,460,220
+Pause:1
+Character:0:guybrush2,470,220
+Pause:2
+Character:0:guybrush1,480,220
+Pause:2
+Speech:0:Um...
+Pause:3
+Speech:0:Where did you say those pirate leaders were?
+Pause:7
+Speech:1:The SCUMM BAR.
+Pause:4
+Speech:0:Right.
+Pause:3
+Speech:0:Thanks.
+Pause:3
+Character:0:guybrush2,480,220
+SetOption:0:Wait Around:Wait around.
+SetOption:1:Scumm Bar:Go to the Scumm Bar.
+Stop:Pause and wait for input
+Scene:Wait Around
+Background:clifftop
+Foreground:lookoutwall
+Character:0:guybrush1,480,220
+Character:1:lookout1,290,220
+Pause:1
+Character:0:guybrush2,480,220
+Pause:2
+Character:0:guybrush1,480,220
+Pause:2
+Character:0:guybrush2,480,220
+SetOption:0:Wait Around:Wait around.
+SetOption:1:Scumm Bar:Go to the Scumm Bar.
+Stop:Pause and wait for input
+Scene:Scumm Bar
+Background:scummbar
+Character:0:guybrush2,200,330
+Pause:1
+Character:0:guybrush3,210,330
+Pause:1
+Character:0:guybrush2,220,330
+Pause:1
+Character:0:guybrush3,230,330
+Pause:1
+Character:0:guybrush2,240,330
+Stop:End of the script
+  </script>
+  <style type="text/css" media="screen">
+body {
+  background-color: white;
+  color: black;
+}
+.hidden {
+  display: none;
+}
+#original {
+  margin-left: 1em;
+}
+  </style>
+</head>
+
+<body>
+<section id="imageLoader" class="hidden">
+  <img class="hidden" src="images/clifftop.png" alt="clifftop" data-name="clifftop">
+  <img class="hidden" src="images/guybrush1.png" alt="guybrush1" data-name="guybrush1">
+  <img class="hidden" src="images/guybrush1talk.png" alt="guybrush1talk" data-name="guybrush1talk">
+  <img class="hidden" src="images/guybrush2.png" alt="guybrush2" data-name="guybrush2">
+  <img class="hidden" src="images/guybrush3.png" alt="guybrush3" data-name="guybrush3">
+  <img class="hidden" src="images/guybrush4.png" alt="guybrush4" data-name="guybrush4">
+  <img class="hidden" src="images/lookout1.png" alt="lookout1" data-name="lookout1">
+  <img class="hidden" src="images/lookout1talk.png" alt="lookout1talk" data-name="lookout1talk">
+  <img class="hidden" src="images/lookout2.png" alt="lookout2" data-name="lookout2">
+  <img class="hidden" src="images/lookout2talk.png" alt="lookout2talk" data-name="lookout2talk">
+  <img class="hidden" src="images/lookout3.png" alt="lookout3" data-name="lookout3">
+  <img class="hidden" src="images/lookout3talk.png" alt="lookout3talk" data-name="lookout3talk">
+  <img class="hidden" src="images/lookoutwall.png" alt="lookoutwall" data-name="lookoutwall">
+  <img class="hidden" src="images/scummbar.png" alt="scummbar" data-name="scummbar">
+  <img class="hidden" src="images/title.png" alt="title" data-name="title">
+</section>
+
+<main>
+<h1>monkeyisland</h1>
+
+<canvas id="screen">
+The game screen appears here if your browser supports the Canvas API.
+</canvas>
+<section id="controls">
+  <button type="button" id="reset">Reset</button>
+  <button type="button" id="pause">Pause</button>
+</section>
+
+<h2>Attribution</h2>
+
+<p><a href="https://wireframe.raspberrypi.com/issues/69">Make a Monkey Island-style adventure, pages 56-57, by Mark Vanstone</a>.</p>
+
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported</a>.</p>
+
+<p><a href="https://www.raspberrypi.com/news/code-an-homage-to-monkey-island-wireframe-69/">Blog post of Source Code</a>.</p>
+
+<h2>Original Python code</h2>
+
+<pre id="original"><code>
+# Monkey Island
+import pgzrun
+import random
+
+with open(&#x27;data.txt&#x27;) as d:
+    script = d.readlines()
+
+pauseCount = 0
+stopped = False
+currentScriptLine = 0
+sceneBackground = &quot;title&quot;
+sceneForeground = &quot;&quot;
+currentScene = &quot;&quot;
+currentText = &quot;&quot;
+currentCharacter = 0
+characters = [0,0,0]
+mycolours = [(100,240,255),(200,200,200),(240,100,100)]
+frame = 0
+talkRandom = 0
+optionText = [&quot;&quot;,&quot;&quot;,&quot;&quot;]
+optionAction = [&quot;&quot;,&quot;&quot;,&quot;&quot;]
+
+def draw():
+    screen.blit(sceneBackground,(0,0))
+    for c in characters:
+        if c != 0:
+            if (frame/(5+talkRandom))%10 &lt; 5 and c.talking == True:
+                c.image = c.imagename + &quot;talk&quot;
+            else: c.image = c.imagename
+            c.draw()
+    if sceneForeground != &quot;&quot;: screen.blit(sceneForeground,(0,0))
+    cc = characters[currentCharacter]
+    if currentText != &quot;&quot;: screen.draw.text(currentText, center = (cc.x,cc.y-100), owidth=0.5, ocolor=(0,0,0), color=mycolours[currentCharacter] , fontsize=30)
+    for o in range(0, 3): screen.draw.text(optionText[o], center = (400,450+(o*40)), color=(255,255,255) , fontsize=30)
+
+def update():
+    global pauseCount, frame, talkRandom, currentText
+    while pauseCount == 0 and stopped == False:
+        processScriptLine()
+    if pauseCount &gt; 0: pauseCount -= 1
+    if pauseCount == 0: currentText = &quot;&quot;
+    if pauseCount &lt; 15 and characters[currentCharacter] != 0:
+        characters[currentCharacter].talking = False
+    frame += 1
+    if frame%30 == 0: talkRandom = random.randint(0, 2)
+
+def processScriptLine():
+    global script, currentScriptLine, pauseCount, stopped, sceneBackground, currentScene, sceneForeground, currentText, currentCharacter
+    sl = script[currentScriptLine].split(&quot;:&quot;)
+    if sl[0] == &quot;Background&quot;: sceneBackground = sl[1].strip(&#x27;\n&#x27;)
+    if sl[0] == &quot;Foreground&quot;: sceneForeground = sl[1].strip(&#x27;\n&#x27;)
+    elif sl[0] == &quot;Pause&quot;: pauseCount = int(sl[1].strip(&#x27;\n&#x27;))*30
+    elif sl[0] == &quot;Scene&quot;: currentScene = sl[1].strip(&#x27;\n&#x27;)
+    elif sl[0] == &quot;Character&quot;:
+        cl = sl[2].split(&quot;,&quot;)
+        setCharacter(int(sl[1]),cl[0],int(cl[1]),int(cl[2]))
+    elif sl[0] == &quot;Speech&quot;:
+        currentCharacter = int(sl[1])
+        currentText = sl[2].strip(&#x27;\n&#x27;)
+        characters[currentCharacter].talking = True
+    elif sl[0] == &quot;SetOption&quot;:
+        optionAction[int(sl[1])] = sl[2]
+        optionText[int(sl[1])] = sl[3]
+    elif sl[0] == &quot;Stop&quot;: stopped = True
+    currentScriptLine += 1
+
+def setScene(scene):
+    global optionText, optionAction, sceneForeground, currentScriptLine, stopped, currentText, currentCharacter, characters
+    optionText = [&quot;&quot;,&quot;&quot;,&quot;&quot;]
+    optionAction = [&quot;&quot;,&quot;&quot;,&quot;&quot;]
+    currentText = &quot;&quot;
+    currentCharacter = 0
+    characters = [0,0,0]
+    sceneForeground = &quot;&quot;
+    line = 0
+    for s in script:
+        if s.strip(&#x27;\n&#x27;) == &quot;Scene:&quot;+scene:
+            currentScriptLine = line
+            stopped = False
+        line += 1
+
+def on_mouse_down(pos):
+    for o in range(0, 3):
+        if pos[1] &gt; 450+(o*40)-15 and pos[1] &lt; 450+(o*40)+15 and optionAction[o] != &quot;&quot;:
+            setScene(optionAction[o])
+
+def setCharacter(cnum,cname,cx,cy):
+    characters[cnum] = Actor(cname, center=(cx, cy))
+    characters[cnum].imagename = cname
+    characters[cnum].talking = False
+
+pgzrun.go()
+</code></pre>
+</main>
+
+<script>
+// Monkey Island
+
+/*
+ * Return a random integer N such that min <= N < max.
+ */
+function getRandomInteger(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor((Math.random() * (max - min)) + min);
+}
+
+const MY_COLOURS = [[100, 240, 255], [200, 200, 200], [240, 100, 100]];
+
+var script, pauseCount, stopped, currentScriptLine, sceneBackground, sceneForeground, currentScene, currentText, currentCharacter, characters, frame, talkRandom, optionText, optionAction;
+
+function reset() {
+  script = document.querySelector('#gameScript').textContent.split('\n');
+
+  pauseCount = 0;
+  stopped = false;
+  currentScriptLine = 0;
+  sceneBackground = "title";
+  sceneForeground = "";
+  currentScene = "";
+  currentText = "";
+  currentCharacter = 0;
+  characters = [0, 0, 0];
+  frame = 0;
+  talkRandom = 0;
+  optionText = ["", "", ""];
+  optionAction = ["", "", ""];
+}
+
+function draw() {
+  screen.blit(sceneBackground, [0, 0]);
+  for (let c of characters) {
+    if (c !== 0) {
+      if ((((frame / (5 + talkRandom)) % 10) < 5) && c.talking) {
+        c.name = c.imagename + "talk";
+      }
+      else {
+        c.name = c.imagename;
+      }
+      c.draw();
+    }
+  }
+  if (sceneForeground !== "") {
+    screen.blit(sceneForeground, [0, 0]);
+  }
+  let cc = characters[currentCharacter];
+  if (currentText !== "") {
+    screen.draw.text(currentText, {
+      center: [cc.posx, cc.posy - 100],
+      owidth: 0.5,
+      ocolor: [0, 0, 0],
+      color: MY_COLOURS[currentCharacter],
+      fontsize: 30
+    });
+  }
+  for (let o = 0; o < 3; o++) {
+    screen.draw.text(optionText[o], {
+      center: [400, 450 + (o * 40)],
+      color: [255, 255, 255],
+      fontsize: 30
+    });
+  }
+}
+
+function update() {
+  while ((pauseCount === 0) && (!stopped)) {
+    processScriptLine();
+  }
+  if (pauseCount > 0) {
+    pauseCount -= 1;
+  }
+  if (pauseCount === 0) {
+    currentText = "";
+  }
+  if ((pauseCount < 15) && (characters[currentCharacter] !== 0)) {
+    characters[currentCharacter].talking = false;
+  }
+  frame += 1;
+  if ((frame % 30) === 0) {
+    talkRandom = getRandomInteger(0, 3);
+  }
+}
+
+function processScriptLine() {
+  let sl = script[currentScriptLine].split(":"),
+      cl;
+  if (sl[0] === "Background") {
+    sceneBackground = sl[1].trim();
+  }
+  if (sl[0] === "Foreground") {
+    sceneForeground = sl[1].trim();
+  }
+  else if (sl[0] === "Pause") {
+    pauseCount = parseInt(sl[1].trim(), 10) * 30;
+  }
+  else if (sl[0] === "Scene") {
+    currentScene = sl[1].trim();
+  }
+  else if (sl[0] === "Character") {
+    cl = sl[2].split(",");
+    setCharacter(parseInt(sl[1].trim(), 10), cl[0], parseInt(cl[1], 10), parseInt(cl[2], 10));
+  }
+  else if (sl[0] === "Speech") {
+    currentCharacter = parseInt(sl[1].trim(), 10);
+    currentText = sl[2].trim();
+    characters[currentCharacter].talking = true;
+  }
+  else if (sl[0] === "SetOption") {
+    cl = parseInt(sl[1].trim(), 10);
+    optionAction[cl] = sl[2];
+    optionText[cl] = sl[3];
+  }
+  else if (sl[0] === "Stop") {
+    stopped = true;
+  }
+  currentScriptLine += 1;
+}
+
+function setScene(scene) {
+  optionText = ["", "", ""];
+  optionAction = ["", "", ""];
+  currentText = "";
+  currentCharacter = 0;
+  characters = [0, 0, 0];
+  sceneForeground = "";
+  let line = 0;
+  for (let s of script) {
+    if (s.trim() === ("Scene:" + scene)) {
+      currentScriptLine = line;
+      stopped = false;
+    }
+    line += 1;
+  }
+}
+
+function on_mouse_down(pos) {
+  for (let o = 0; o < 3; o++) {
+    if ((pos[1] > (450 + (o * 40) - 15)) && (pos[1] < (450 + (o * 40) + 15)) && (optionAction[o] !== "")) {
+      setScene(optionAction[o]);
+    }
+  }
+}
+
+function setCharacter(cnum, cname, cx, cy) {
+  characters[cnum] = new Actor(cname);
+  characters[cnum].center = [cx, cy];
+  characters[cnum].imagename = cname;
+  characters[cnum].talking = false;
+}
+
+window.addEventListener('load', (event) => {
+  screen.init();
+});
+</script>
+</body>
+
+</html>
